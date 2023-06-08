@@ -23,7 +23,7 @@ class MovieRepositoryImpl implements MovieRepository {
       }
 
       return const Left('Error get top rated movies');
-    } on DioException catch (e) {
+    } on DioError catch (e) {
       if (e.response != null) {
         return Left(e.response.toString());
       }
@@ -47,7 +47,7 @@ class MovieRepositoryImpl implements MovieRepository {
       }
 
       return const Left('Error get now playing movies');
-    } on DioException catch (e) {
+    } on DioError catch (e) {
       if (e.response != null) {
         return Left(e.response.toString());
       }
@@ -69,7 +69,7 @@ class MovieRepositoryImpl implements MovieRepository {
       }
 
       return const Left('Error get movie detail');
-    } on DioException catch (e) {
+    } on DioError catch (e) {
       if (e.response != null) {
         return Left(e.response.toString());
       }
@@ -94,7 +94,7 @@ class MovieRepositoryImpl implements MovieRepository {
       }
 
       return const Left('Error search movie');
-    } on DioException catch (e) {
+    } on DioError catch (e) {
       if (e.response != null) {
         return Left(e.response.toString());
       }
