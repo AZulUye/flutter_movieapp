@@ -79,6 +79,29 @@ class MovieRepositoryImpl implements MovieRepository {
   }
 
   @override
+  Future<Either<String, MovieResponseModel>> getRecommendations(
+      {required int id}) async {
+    try {
+      final result = await _dio.get(
+        '/movie/$id/recommendations',
+      );
+
+      if (result.statusCode == 200 && result.data != null) {
+        final model = MovieResponseModel.fromMap(result.data);
+        return Right(model);
+      }
+
+      return const Left('Error get now playing movies');
+    } on DioError catch (e) {
+      if (e.response != null) {
+        return Left(e.response.toString());
+      }
+
+      return const Left('Failed to load now playing movies');
+    }
+  }
+
+  @override
   Future<Either<String, MovieResponseModel>> search({
     required String query,
   }) async {
