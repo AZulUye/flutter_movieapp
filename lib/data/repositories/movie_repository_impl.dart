@@ -91,13 +91,13 @@ class MovieRepositoryImpl implements MovieRepository {
         return Right(model);
       }
 
-      return const Left('Error get now playing movies');
+      return const Left('Error get recommendations movies');
     } on DioError catch (e) {
       if (e.response != null) {
         return Left(e.response.toString());
       }
 
-      return const Left('Failed to load now playing movies');
+      return const Left('Failed to load recommendations movies');
     }
   }
 
