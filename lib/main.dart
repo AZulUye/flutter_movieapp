@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Movie App',
         home: const MovieHomePage(),
-        // theme: ThemeData(scaffoldBackgroundColor: primaryColor),
+        theme: ThemeData(scaffoldBackgroundColor: primaryColor),
         debugShowCheckedModeBanner: false,
       ),
     );
